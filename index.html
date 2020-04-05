@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>    
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Weather Dashboard</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png"/>
+    <!-- bootstrap library -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <!-- local style sheet -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css"/>
+</head>
+<body>
+    <header>
+        <!-- Weather Dashboard header -->
+    </header>
+    <aside>
+        <!-- search bar and search history -->
+    </aside>
+    <main>
+        <!-- Info Display - City name, date, weather conditions icon, temperature, humidity, wind speed, UV index and color, 5 day forecast with date, weather conditions icon, temperature, and humidity-->
+    </main>
+    <script>
+        // Openweather API key = 5f9f4afbfb142ac29ca47b2737de474a
+        
+        queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+        
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+        });
+        
+        </script>    
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- bootstrap javascript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- local javascript -->
+    <script type="text/javascript" src="./assets/js/script.js"></script>
+</body>
+</html>
