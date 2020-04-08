@@ -1,12 +1,5 @@
-// initialize search history
-var searchHistory;
-// checks if previous search history exists and retrieves it if applicable
-if (localStorage.getItem("searchHistory") === null) {
-    searchHistory = [];
-}
-else {
-    searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-}
+
+
 // establish variable for api key
 var apiKey = "5f9f4afbfb142ac29ca47b2737de474a";
 
@@ -202,5 +195,18 @@ $("#clear").on("click", function() {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
     renderSearchHistory();
 })
-// starting script to render search history
+// starting script
+// initialize search history
+var searchHistory;
+// checks if previous search history exists and retrieves it if applicable
+if (localStorage.getItem("searchHistory") === null) {
+    searchHistory = [];
+}
+// if search history exists, preloads weather information for most recent search entry
+else {
+    searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+    console.log("searchHistory", searchHistory[0]);
+    callCurrent(searchHistory[0]);
+}
+// renders search history
 renderSearchHistory();
