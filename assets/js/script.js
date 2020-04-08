@@ -5,7 +5,7 @@ var apiKey = "5f9f4afbfb142ac29ca47b2737de474a";
 
 // calls current end point to retrieve lat and lon for city
 function callCurrent(cityName) {
-    var currentDayQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+    var currentDayQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
     $.ajax({
         url: currentDayQueryURL,
         method: "GET"
@@ -49,7 +49,7 @@ function renderFiveDayForecast(response) {
     var yy = yyyy.charAt(2) + yyyy.charAt(3);
     for (let i = 1; i < 6; i++) {
         var icon = response.daily[i].weather[0].icon;
-        var iconURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+        var iconURL = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
         var iconAlt = response.daily[i].weather[0].description;
         var bdd = dd + i;
         bdd = bdd.toString();
@@ -81,7 +81,7 @@ function renderFiveDayForecast(response) {
 // renders current weather section
 function renderCurrentWeather(cityName, response) {
     var icon = response.current.weather[0].icon;
-    var iconURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+    var iconURL = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
     var iconAlt = response.current.weather[0].description;
     var a = new Date();
     var mm = a.getMonth() + 1;
