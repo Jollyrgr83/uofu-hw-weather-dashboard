@@ -57,13 +57,16 @@ h2 {
     text-align: center;
 }
 /* five day forecast elements */
+.five-day-container {
+    margin: 15px;
+    padding: 15px;
+    width: 15%;
+    text-align: center;
+}
 .five-day {
     background-color: navy;
     border-radius: 5%;
     color: whitesmoke;
-    margin: 15px;
-    padding: 15px;
-    width: 15%;
     text-align: center;
 }
 

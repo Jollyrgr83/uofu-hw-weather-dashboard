@@ -1,7 +1,19 @@
-
+// OVERVIEW
+// This project uses the Current Weather and One Call endpoints from the OpenWeatherMap API to display weather data for a city name that is provided by the user.
+// This script is divided into the following categories: Variables, Functions, Event Listeners, and Starting Script. 
+// VARIABLES - The variable apiKey is established first and is used in the endpoint call urls. 
+// FUNCTIONS - 
+// callCurrent - takes in the cityName variable from the user search functions to call the Current Weather end point in order to retrieve the latitude (lat) and longitude (lon) for the city. The cityName, lat, and lon are then sent to callOneCall.
+// callOneCall - takes in the cityName, lat, and lon from callCurrent to call the One Call end point in order to retrieve the weather information. Uses renderCurrentWeather and renderFiveDayForecast to update the html with the weather data.
+// renderCurrentWeather and renderFiveDayForecast are called in callOneCall to generate the html elements and populate them with the associated weather data. The UV index div is automatically updated with a color to indicate the warning level of the UV index value. See comments below for more information.
+// renderSearchHistory clears, generates, and populates the html elements in the search history section.
+// EVENT LISTENERS - there are 3 event listeners used: search button, search history buttons, and clear button. The search button event listener updates the search history and runs the end point call functions to update the search history and weather data based on the user input in the text input. The search history buttons update the search history and run the end point call functions to update the search history and weather data based on the button value. The clear button clears the search history.
+// STARTING SCRIPT - initializes the search history from local storage, runs the end point calls to update weather data for the most recent search entry (if available), and renders the search history
 
 // establish variable for api key
 var apiKey = "5f9f4afbfb142ac29ca47b2737de474a";
+
+// FUNCTIONS
 
 // calls current end point to retrieve lat and lon for city
 function callCurrent(cityName) {
@@ -54,13 +66,16 @@ function renderFiveDayForecast(response) {
         var bdd = dd + i;
         bdd = bdd.toString();
         var containerEl = $("<div>");
-        containerEl.addClass("five-day");
+        containerEl.addClass("five-day-container");
         var dateEl = $("<div>");
-        dateEl.text(mm + "." + bdd + "." +yy);
+        dateEl.text(mm + "/" + bdd + "/" +yy);
+        dateEl.addClass("five-day");
         var imgEl = $("<img>");
         imgEl.attr("src", iconURL);
         imgEl.attr("alt", iconAlt);
         imgEl.attr("style", "background-color: lightsteelblue");
+        var infoContainerEl = $("<div>");
+        infoContainerEl.addClass("five-day");
         var tempTitleEl = $("<div>");
         tempTitleEl.text("Temp:")
         var tempEl = $("<div>");
@@ -71,10 +86,11 @@ function renderFiveDayForecast(response) {
         humEl.text(response.daily[i].humidity + "%");
         containerEl.append(dateEl);
         containerEl.append(imgEl);
-        containerEl.append(tempTitleEl);
-        containerEl.append(tempEl);
-        containerEl.append(humTitleEl);
-        containerEl.append(humEl);
+        infoContainerEl.append(tempTitleEl);
+        infoContainerEl.append(tempEl);
+        infoContainerEl.append(humTitleEl);
+        infoContainerEl.append(humEl);
+        containerEl.append(infoContainerEl);
         $("#five-day").append(containerEl);
     }
 }
@@ -105,7 +121,7 @@ function renderCurrentWeather(cityName, response) {
     iconEl.attr("alt", iconAlt);
     var dateEl = $("<h2>");
     dateEl.addClass("p-3 mt-2 mx-auto");
-    dateEl.text(mm + "." + dd + "." + yy);
+    dateEl.text(mm + "/" + dd + "/" + yy);
     rowEl01.append(cityNameEl);
     rowEl01.append(iconEl);
     rowEl01.append(dateEl);
@@ -173,6 +189,9 @@ function renderCurrentWeather(cityName, response) {
     $(".current-weather").append(rowEl02);
     $(".current-weather").append(rowEl03);
 }
+
+// EVENT LISTENERS
+
 // assigns click event to search button to allow searching
 $("#button").on("click", function() {
     var cityName = $("#cityInput").val().trim();
@@ -195,7 +214,9 @@ $("#clear").on("click", function() {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
     renderSearchHistory();
 })
-// starting script
+
+// STARTING SCRIPT
+
 // initialize search history
 var searchHistory;
 // checks if previous search history exists and retrieves it if applicable
