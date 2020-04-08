@@ -1,0 +1,90 @@
+body {
+    background-color: whitesmoke;
+}
+/* header elements */
+.top-bar {
+    background-color: navy;
+    color: whitesmoke;
+    text-align: center;
+    box-shadow: 5px 5px 5px lightgray;
+    width: 100%;
+    padding: 15px;
+}
+/* search bar section elements */
+.search-container {
+    background-color: lightsteelblue;
+    box-shadow: 5px 5px 5px lightgray;
+    margin: 20px;
+    padding: 15px;
+}
+.search {
+    width: 90% !important;
+    margin: 7.5px 0 7.5px 0;
+}
+.search-history {
+    background-color: white;
+    width: 90%; 
+    margin: 7.5px 0 7.5px 0;  
+}
+/* current weather section elements */
+.current-weather-container {
+    background-color: lightsteelblue;
+    box-shadow: 5px 5px 5px lightgray;
+    margin: 20px;
+}
+.current-weather {
+    background-color: lightsteelblue;
+}
+h2 {
+    color: navy;
+}
+.current-info-title {
+    background-color: navy;
+    border-radius: 5%;
+    color: whitesmoke;
+    margin: 15px;
+    padding: 15px;
+    width: 20%;
+    text-align: center;
+}
+.current-info {
+    background-color: whitesmoke;
+    border-radius: 5%;
+    color: black;
+    margin: 15px;
+    padding: 15px;
+    width: 20%;
+    text-align: center;
+}
+/* five day forecast elements */
+.five-day {
+    background-color: navy;
+    border-radius: 5%;
+    color: whitesmoke;
+    margin: 15px;
+    padding: 15px;
+    width: 15%;
+    text-align: center;
+}
+
+/* used in the uv index div to signify harm level */
+.extreme {
+    background-color: violet;
+    color: black;
+}
+.very-high {
+    background-color: red;
+    color: black;
+}
+.high {
+    background-color: orange;
+    color: black;
+}
+.moderate {
+    background-color: yellow;
+    color: black;
+}
+.low {
+    background-color: green;
+    color: black;
+}
