@@ -66,14 +66,14 @@ function renderFiveDayForecast(response) {
         var bdd = dd + i;
         bdd = bdd.toString();
         var containerEl = $("<div>");
-        containerEl.addClass("five-day-container");
+        containerEl.addClass("five-day-container col-sm-2");
         var dateEl = $("<div>");
         dateEl.text(mm + "/" + bdd + "/" +yy);
         dateEl.addClass("five-day");
         var imgEl = $("<img>");
         imgEl.attr("src", iconURL);
         imgEl.attr("alt", iconAlt);
-        imgEl.attr("style", "background-color: lightsteelblue");
+        imgEl.attr("class", "five-day-icon");
         var infoContainerEl = $("<div>");
         infoContainerEl.addClass("five-day");
         var tempTitleEl = $("<div>");
@@ -129,16 +129,16 @@ function renderCurrentWeather(cityName, response) {
     var rowEl02 = $("<div>");
     rowEl02.addClass("row mx-auto");
     var tempEl01 = $("<div>");
-    tempEl01.addClass("current-info-title");
+    tempEl01.addClass("col-sm-2 current-info-title");
     tempEl01.text("Temperature: ");
     var tempEl02 = $("<div>");
-    tempEl02.addClass("current-info");
+    tempEl02.addClass("current-info col-sm-2");
     tempEl02.text(response.current.temp + "°F");
     var humEl01 = $("<div>");
-    humEl01.addClass("current-info-title");
+    humEl01.addClass("current-info-title col-sm-2");
     humEl01.text("Humidity: ");
     var humEl02 = $("<div>");
-    humEl02.addClass("current-info");
+    humEl02.addClass("current-info col-sm-2");
     humEl02.text(response.current.humidity + "%");
     rowEl02.append(tempEl01);
     rowEl02.append(tempEl02);
@@ -148,13 +148,13 @@ function renderCurrentWeather(cityName, response) {
     var rowEl03 = $("<div>");
     rowEl03.addClass("row mx-auto");
     var windEl01 = $("<div>");
-    windEl01.addClass("current-info-title");
+    windEl01.addClass("current-info-title col-sm-2");
     windEl01.text("Windspeed: ");
     var windEl02 = $("<div>");
-    windEl02.addClass("current-info");
+    windEl02.addClass("current-info col-sm-2");
     windEl02.text(response.current.wind_speed + "mph");
     var uvEl01 = $("<div>");
-    uvEl01.addClass("current-info-title");
+    uvEl01.addClass("current-info-title col-sm-2");
     uvEl01.text("UV Index: ");
     var uvEl02 = $("<div>");
     // updates background color of uv index 
@@ -165,19 +165,19 @@ function renderCurrentWeather(cityName, response) {
     // 11+: extreme - violet
     var uv = response.current.uvi;
     if (uv < 3) {
-        uvEl02.addClass("current-info low");
+        uvEl02.addClass("current-info low col-sm-2");
     }
     else if (uv >= 3 && uv < 6) {
-        uvEl02.addClass("current-info moderate");
+        uvEl02.addClass("current-info moderate col-sm-2");
     }
     else if (uv >= 6 && uv < 8) {
-        uvEl02.addClass("current-info high");
+        uvEl02.addClass("current-info high col-sm-2");
     }
     else if (uv >= 8 && uv < 11) {
-        uvEl02.addClass("current-info very-high");
+        uvEl02.addClass("current-info very-high col-sm-2");
     }
     else {
-        uvEl02.addClass("current-info extreme");
+        uvEl02.addClass("current-info extreme col-sm-2");
     }
     uvEl02.text(uv);
     rowEl03.append(windEl01);
