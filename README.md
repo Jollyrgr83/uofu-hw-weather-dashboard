@@ -3,6 +3,8 @@
 
 This project is a weather dashboard that shows weather data from the OpenWeatherMap API for a city based on a user input. City search history is saved and accessible on the screen. Weather data presented includes a 5 day forecast, current weather conditions, temperature, UV index and other information.
 
+<https://jollyrgr83.github.io/weather-dashboard/>
+
 # Requirements
 
 This project was designed to be used on any web browser.
