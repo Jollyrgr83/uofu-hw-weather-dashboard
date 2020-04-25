@@ -203,7 +203,6 @@ $("#button").on("click", function() {
 // assigns click event to all search history buttons to allow searching
 $(document).on("click", "#history-button", function() {
     var cityName = event.target.textContent;
-    searchHistory.unshift(cityName);
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
     renderSearchHistory();
     callCurrent(cityName);
