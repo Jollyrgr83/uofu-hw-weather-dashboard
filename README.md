@@ -5,27 +5,27 @@ This project is a weather dashboard that shows weather data from the OpenWeather
 
 <https://jollyrgr83.github.io/weather-dashboard/>
 
-# Requirements
+## Requirements
 
 This project was designed to be used on any web browser.
 
-# Installation
+## Installation
 
 This project does not require installation.
 
-# Technology/Framework
+## Technology/Framework
 
 This project was created using html, css, and javascript as well as the bootstrap and jQuery libraries and the OpenWeatherMap API.
 
-# How to Use
+## How to Use
 
 Enter a city in the search bar on the top left and view the corresponding weather information on the pane to the right. Previously searched cities will appear below the search bar.
 
-# Credits
+## Credits
 
 I would like to thank all the instructors, TAs, and staff at the University of Utah Coding Bootcamp for the instruction, curriculum, inspiration, and other support provided to assist me in the creation of this project.
 
-# License
+## License
 
 Released under MIT License
 
