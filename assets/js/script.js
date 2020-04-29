@@ -10,6 +10,9 @@
 // EVENT LISTENERS - there are 3 event listeners used: search button, search history buttons, and clear button. The search button event listener updates the search history and runs the end point call functions to update the search history and weather data based on the user input in the text input. The search history buttons update the search history and run the end point call functions to update the search history and weather data based on the button value. The clear button clears the search history.
 // STARTING SCRIPT - initializes the search history from local storage, runs the end point calls to update weather data for the most recent search entry (if available), and renders the search history
 
+// establish variable for dates
+var calendar = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
 // establish variable for api key
 var apiKey = "5f9f4afbfb142ac29ca47b2737de474a";
 
@@ -54,7 +57,6 @@ function renderFiveDayForecast(response) {
     $("#five-day").empty();
     var a = new Date();
     var mm = a.getMonth() + 1;
-    mm = mm.toString();
     var dd = a.getDate();
     var yyyy = a.getFullYear();
     yyyy = yyyy.toString();
@@ -64,12 +66,22 @@ function renderFiveDayForecast(response) {
         var iconURL = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
         var iconAlt = response.daily[i].weather[0].description;
         var bdd = dd + i;
+        if (bdd > calendar[mm - 1]) {
+            bdd = bdd - calendar[mm - 1];
+            bmm = mm + 1;
+        }
+        else {
+            bmm = mm;
+        }
+        bmm = bmm.toString();
         bdd = bdd.toString();
         var containerEl = $("<div>");
         containerEl.addClass("five-day-container col-sm-2");
         var dateEl = $("<div>");
-        dateEl.text(mm + "/" + bdd + "/" +yy);
+        dateEl.text(bmm + "/" + bdd + "/" +yy);
         dateEl.addClass("five-day");
+        var imgContainer = $("<div>");
+        imgContainer.attr("class", "five-day-icon-container mx-auto");
         var imgEl = $("<img>");
         imgEl.attr("src", iconURL);
         imgEl.attr("alt", iconAlt);
@@ -79,13 +91,14 @@ function renderFiveDayForecast(response) {
         var tempTitleEl = $("<div>");
         tempTitleEl.text("Temp:")
         var tempEl = $("<div>");
-        tempEl.text(response.daily[i].temp.day + "°F");
+        tempEl.text(response.daily[i].temp.day.toFixed(0) + "°F");
         var humTitleEl = $("<div>");
         humTitleEl.text("Humidity:");
         var humEl = $("<div>");
-        humEl.text(response.daily[i].humidity + "%");
+        humEl.text(response.daily[i].humidity.toFixed(0) + "%");
         containerEl.append(dateEl);
-        containerEl.append(imgEl);
+        imgContainer.append(imgEl);
+        containerEl.append(imgContainer);
         infoContainerEl.append(tempTitleEl);
         infoContainerEl.append(tempEl);
         infoContainerEl.append(humTitleEl);
@@ -133,13 +146,13 @@ function renderCurrentWeather(cityName, response) {
     tempEl01.text("Temperature: ");
     var tempEl02 = $("<div>");
     tempEl02.addClass("current-info col-sm-2");
-    tempEl02.text(response.current.temp + "°F");
+    tempEl02.text(response.current.temp.toFixed(0) + "°F");
     var humEl01 = $("<div>");
     humEl01.addClass("current-info-title col-sm-2");
     humEl01.text("Humidity: ");
     var humEl02 = $("<div>");
     humEl02.addClass("current-info col-sm-2");
-    humEl02.text(response.current.humidity + "%");
+    humEl02.text(response.current.humidity.toFixed(0) + "%");
     rowEl02.append(tempEl01);
     rowEl02.append(tempEl02);
     rowEl02.append(humEl01);
@@ -152,7 +165,7 @@ function renderCurrentWeather(cityName, response) {
     windEl01.text("Windspeed: ");
     var windEl02 = $("<div>");
     windEl02.addClass("current-info col-sm-2");
-    windEl02.text(response.current.wind_speed + "mph");
+    windEl02.text(response.current.wind_speed.toFixed(1) + " mph");
     var uvEl01 = $("<div>");
     uvEl01.addClass("current-info-title col-sm-2");
     uvEl01.text("UV Index: ");
